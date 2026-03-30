@@ -1,0 +1,33 @@
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     constructor(val = 0, next = null) {
+ *         this.val = val;
+ *         this.next = next;
+ *     }
+ * }
+ */
+
+class Solution {
+    /**
+     * @param {ListNode} head
+     * @param {number} n
+     * @return {ListNode}
+     */
+    removeNthFromEnd(head, n) { 
+        return this.rec(head,[n])
+    } 
+
+    rec(node, n) {
+         
+        if (!node) return null 
+
+        node.next = this.rec(node.next, n) 
+        n[0] -- 
+        if (n[0] === 0) {
+            return node.next
+        } 
+
+        return node
+    }
+}
